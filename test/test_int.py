@@ -9,6 +9,22 @@ class MyTestCase(unittest.TestCase):
         results = checker.check(*arguments, low=0, high=5)
         self.assertTrue(all(results))
 
+    def test_result_len_matches_valid_arg(self):
+        arguments = (0, "1", "2", "5")
+        expected = len(arguments)
+        checker = IntChecker()
+        results = checker.check(*arguments, low=0, high=5)
+        results_len = sum(1 for _ in results)
+        self.assertEqual(expected, results_len)
+
+    def test_result_len_matches_not_valid_arg(self):
+        arguments = (0, "1", "nope", "5")
+        expected = len(arguments)
+        checker = IntChecker()
+        results = checker.check(*arguments, low=0, high=5)
+        results_len = sum(1 for _ in results)
+        self.assertEqual(expected, results_len)
+
     def test_arg_are_not_valid_1(self):
         arguments = (0, "1", "2.56", "5")
         checker = IntChecker()
