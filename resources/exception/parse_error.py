@@ -1,2 +1,0 @@
-class CannotParseError(ValueError):
-    pass

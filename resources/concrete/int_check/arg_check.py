@@ -6,4 +6,8 @@ from resources.abstract.arg_check import ArgChecker
 class IntChecker(ArgChecker):
 
     def validate(self, value: Any, low: int, high: int) -> bool:
-        return low <= int(value) <= high
+        try:
+            value_expected = int(value)
+            return low <= value_expected <= high
+        except ValueError:
+            return False

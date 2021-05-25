@@ -5,5 +5,6 @@ setup(
     version="0.0.1",
     description="argument checker",
     py_modules="check",
-    package_dir={"": "src"}
+    package_dir={"": "src"},
+    python_requires=">=3.7.0"
 )
