@@ -17,6 +17,18 @@ class MyTestCase(unittest.TestCase):
         are_valid = check_arguments(*arguments, **key_arguments)
         self.assertTrue(all(are_valid))
 
+    def test_float_are_not_valid_1(self):
+        arguments = ("0.7", "0.1", "3", "5", "10.0", None, True)
+        key_arguments = {"min": 0, "max": 10, "expected": str}
+        are_valid = check_arguments(*arguments, **key_arguments)
+        self.assertFalse(all(are_valid))
+
+    def test_float_are_not_valid_2(self):
+        arguments = ("0.7", "0.1", "3", "5", "10.0")
+        key_arguments = {"min": 0, "max": 5, "expected": int}
+        are_valid = check_arguments(*arguments, **key_arguments)
+        self.assertFalse(all(are_valid))
+
     def test_raises_not_enough_args_error(self):
         with self.assertRaises(NotEnoughArgumentsError):
             arguments = ()

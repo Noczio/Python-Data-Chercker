@@ -31,6 +31,12 @@ class MyTestCase(unittest.TestCase):
         results = checker.check(*arguments, low=0, high=5)
         self.assertFalse(all(results))
 
+    def test_arg_are_not_valid_2(self):
+        arguments = (0, "1", None, "5")
+        checker = StrChecker()
+        results = checker.check(*arguments, low=0, high=5)
+        self.assertFalse(all(results))
+
 
 if __name__ == '__main__':
     unittest.main()
