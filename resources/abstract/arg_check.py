@@ -9,11 +9,9 @@ class ArgChecker(ABC):
         pass
 
     def check(self, *args, low: int, high: int):
-        if len(args):
-            for element in args:
-                yield self.validate(element, low, high)
-        else:
-            yield False
+        for element in args:
+            yield self.validate(element, low, high)
+
 
 
 

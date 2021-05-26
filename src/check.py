@@ -1,18 +1,26 @@
-from typing import Any
-
 from resources.concrete.float_check.arg_check import FloatChecker
 from resources.concrete.int_check.arg_check import IntChecker
 from resources.concrete.str_check.arg_check import StrChecker
-from resources.exception.key_error import CheckerNotAvailable
+from resources.exceptions.error import *
 
 
-def check_arguments(*args, left_border: int, right_border: int, expected: Any):
-    options = {int: IntChecker(),
-               float: FloatChecker(),
-               str: StrChecker()}
-    if expected in options.keys():
-        checker = options[expected]
-        results = checker.check(*args, low=left_border, high=right_border)
-        return results
-    else:
-        raise KeyError("Expected type is not implemented")
+def check_arguments(*args, **kwargs):
+    try:
+        if len(args):
+            minimum = kwargs["min"]
+            maximum = kwargs["max"]
+            expected = kwargs["expected"]
+
+            options = {int: IntChecker(),
+                       float: FloatChecker(),
+                       str: StrChecker()}
+
+            checker = options[expected]
+            results = checker.check(*args, low=minimum, high=maximum)
+            return results
+        else:
+            raise NotEnoughArgumentsError
+    except KeyError:
+        raise KeyError("min, max and expected must be provided")
+    except NotEnoughArgumentsError:
+        raise NotEnoughArgumentsError("At least one argument must be provided")
