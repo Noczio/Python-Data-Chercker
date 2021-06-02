@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, Generator
 
 
 class ArgChecker(ABC):
@@ -9,7 +9,7 @@ class ArgChecker(ABC):
         """value is a variable of any type, while low and high are the validation borders"""
         pass
 
-    def check(self, *args, low: int, high: int):
+    def check(self, *args, low: int, high: int) -> Generator:
         """returns a generator based on a validation withing a range"""
         for element in args:
             yield self.validate(element, low, high)
