@@ -1,6 +1,4 @@
-from resources.concrete.float_check.arg_check import FloatChecker
-from resources.concrete.int_check.arg_check import IntChecker
-from resources.concrete.str_check.arg_check import StrChecker
+from resources.concrete.check.options import create_checker, available_checkers
 from resources.exceptions.error import *
 
 
@@ -24,18 +22,14 @@ def check_arguments(*args, **kwargs):
         maximum = kwargs["max"]
         expected = kwargs["expected"]
 
-        options = {int: IntChecker(),
-                   float: FloatChecker(),
-                   str: StrChecker()}
-
-        min_max_checker = options[int]
+        min_max_checker = create_checker(int)
         min_max_are_valid = min_max_checker.check(minimum, maximum, low=minimum, high=maximum)
 
         if len(args) == 0:
             raise NotEnoughArgumentsError("At least one argument must be provided")
 
-        if all(min_max_are_valid) and expected in (options.keys()):
-            checker = options[expected]
+        if all(min_max_are_valid) and expected in available_checkers():
+            checker = create_checker(expected)
             results = checker.check(*args, low=minimum, high=maximum)
             return results          
         else:
