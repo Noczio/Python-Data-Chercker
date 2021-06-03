@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name = 'generator-data-checker',
-    version = '1.0.0',
+    name = 'generator_data_checker',
+    version = '1.0.1',
     description = 'Python data checker withing a range',
     url = 'https://github.com/Noczio/Python-Data-Chercker.git', 
     author = 'Dev Nocz', 
