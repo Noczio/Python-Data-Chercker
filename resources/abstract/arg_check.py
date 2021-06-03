@@ -6,7 +6,6 @@ class ArgChecker(ABC):
     @abstractmethod
     def validate(self, value: Any, low: int, high: int) -> bool:
         """[summary]
-
         value is a variable of any type, while low and high are the validation borders
 
         Args:
@@ -21,7 +20,6 @@ class ArgChecker(ABC):
 
     def check(self, *args, low: int, high: int) -> Generator:
         """[summary]
-
         returns a generator based on a validation withing a range
 
         Args:

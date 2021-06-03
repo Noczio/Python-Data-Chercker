@@ -6,7 +6,7 @@ from resources.exceptions.error import *
 
 def check_arguments(*args, **kwargs):
     """[summary]
-    args can be Any data, but kwargs must have a min, max and expected.
+    args can be Any data, but kwargs must have a min, max and expected. 
     Ex: are_valid = check_arguments(1, "2", 1.2, min=0, max=5, expected=int)
     are_valid is a generator of boolean values, which means that all(are_valid)
     will return False, because 1.2 is float, not a integer withting 0 and 5
@@ -17,7 +17,7 @@ def check_arguments(*args, **kwargs):
         KeyError: [min, max or expected kwargs were not provided]
 
     Returns:
-        [Generator]: [a generator of boolean values. True if arg is within range and expected type]
+        [Generator]: [a generator of boolean values. True if args are within range and expected type]
     """
     try:
         minimum = kwargs["min"]
