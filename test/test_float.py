@@ -1,4 +1,5 @@
 import unittest
+
 from resources.concrete.float_check.arg_check import FloatChecker
 
 

@@ -1,4 +1,5 @@
 import unittest
+
 from resources.concrete.int_check.arg_check import IntChecker
 
 

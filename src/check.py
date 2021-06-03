@@ -1,8 +1,10 @@
+from typing import Generator
+
 from resources.concrete.check.options import create_checker, available_checkers
 from resources.exceptions.error import *
 
 
-def check_arguments(*args, **kwargs):
+def check_arguments(*args, **kwargs) -> Generator:
     """[summary]
     args can be Any data, but kwargs must have a min, max and expected. 
     Ex: are_valid = check_arguments(1, "2", 1.2, min=0, max=5, expected=int)
@@ -31,10 +33,10 @@ def check_arguments(*args, **kwargs):
         if all(min_max_are_valid) and expected in available_checkers():
             checker = create_checker(expected)
             results = checker.check(*args, low=minimum, high=maximum)
-            return results          
+            return results
         else:
             raise WrongArgumentsError("min, max or expected have invalid values")
-                           
+
     except KeyError:
         raise KeyError("min, max and expected must be provided")
     except (NotEnoughArgumentsError, WrongArgumentsError):

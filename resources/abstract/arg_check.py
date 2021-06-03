@@ -31,7 +31,3 @@ class ArgChecker(ABC):
         """
         for element in args:
             yield self.validate(element, low, high)
-
-
-
-

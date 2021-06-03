@@ -1,4 +1,5 @@
 import unittest
+
 from resources.concrete.str_check.arg_check import StrChecker
 
 
