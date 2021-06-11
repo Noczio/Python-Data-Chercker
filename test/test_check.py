@@ -23,6 +23,12 @@ class MyTestCase(unittest.TestCase):
         are_valid = check_arguments(*arguments, min=0, max=10, expected=float)
         self.assertTrue(all(are_valid))
 
+    def test_float_are_valid_4(self):
+        arguments = ("0.7", "0.1", "3", "5", "10.0", 5)
+        key_arguments = {"low": 0, "maximum": 10, "type": float}
+        are_valid = check_arguments(*arguments, **key_arguments)
+        self.assertTrue(all(are_valid))
+
     def test_float_are_not_valid_1(self):
         arguments = ("0.7", "0.1", "3", "5", "10.0", None, True)
         key_arguments = {"min": 0, "max": 10, "expected": str}
@@ -42,7 +48,7 @@ class MyTestCase(unittest.TestCase):
             _ = check_arguments(*arguments, **key_arguments)
 
     def test_raises_key_error(self):
-        with self.assertRaises(KeyError):
+        with self.assertRaises(MissingKeyArgument):
             arguments = ("0.7", "0.1", "3", "5", "10.0")
             key_arguments = {"left_border": 0, "max": 10, "expected": int}
             _ = check_arguments(*arguments, **key_arguments)

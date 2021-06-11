@@ -4,3 +4,7 @@ class NotEnoughArgumentsError(Exception):
 
 class WrongArgumentsError(Exception):
     pass
+
+
+class MissingKeyArgument(KeyError):
+    pass

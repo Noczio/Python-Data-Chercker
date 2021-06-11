@@ -7,7 +7,7 @@ class FloatChecker(ArgChecker):
 
     def validate(self, value: Any, low: int, high: int) -> bool:
         """[summary]
-        value is a variable that will be parsed to float, while low and high are the validation borders
+        value is a variable that will be parsed to float, while low and high are the validation borders.
 
        Args:
             value (Any): [value that can be any python type]
