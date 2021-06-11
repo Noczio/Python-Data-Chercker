@@ -7,7 +7,7 @@ setup(
     url='https://github.com/Noczio/Python-Data-Chercker.git',
     author='Devnocz / David Rey',
     author_email='devnocz@gmail.com',
-    keywords='Python, data, check, generator',
+    keywords='Python, data, check_additionals, generator',
     package_dir={'': 'src'},
     packages=find_packages(where='src'),
     python_requires='>=3.7',
